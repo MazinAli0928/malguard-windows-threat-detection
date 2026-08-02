@@ -1,0 +1,172 @@
+MALGUARD – UNIQUENESS OF THE PROJECT
+
+Project: Behavior-Based Malware / Spyware Detection Current
+Implementation: MALGUARD – Real-Time Windows Behavioral Threat Detection
+System
+
+HOW MALGUARD IS UNIQUE FROM THE PROJECTS IN THE LITERATURE REVIEW
+
+1.  REAL-TIME WINDOWS TELEMETRY
+
+Many existing projects in the literature review focus on Android
+malware, network traffic, API-call datasets, PE files, or offline
+datasets.
+
+MALGUARD works with real-time Windows telemetry collected using Sysmon.
+
+Pipeline: Windows → Sysmon → Real-Time Events → Behavioral Windows →
+Feature Extraction → Random Forest → Risk Engine → FastAPI → MALGUARD
+Dashboard
+
+2.  MULTI-BEHAVIOR DETECTION
+
+MALGUARD monitors multiple types of Windows behavior instead of
+depending on a single activity.
+
+Important Sysmon events: Event 1 – Process Creation Event 3 – Network
+Connection Event 5 – Process Termination Event 11 – File Creation Event
+12 – Registry Object Activity Event 13 – Registry Value Activity Event
+22 – DNS Query
+
+This creates a broader behavioral picture of system activity.
+
+3.  BEHAVIORAL WINDOW ANALYSIS
+
+MALGUARD groups real-time events into behavioral windows, such as
+windows of 50 Sysmon events.
+
+The windows are converted into features including event counts, activity
+counts and ratios for process, network, file and registry behavior.
+
+The ML model therefore analyzes behavioral patterns rather than simply
+checking one isolated event.
+
+4.  MACHINE LEARNING + RISK ENGINE
+
+MALGUARD does not depend entirely on the machine-learning prediction.
+
+Random Forest → Malicious Probability → Behavioral Diversity → Context
+Checks → Risk Engine → Final Threat Status
+
+For example, a high malicious probability caused only by registry
+activity does not necessarily become a confirmed threat. The risk engine
+can consider the lack of behavioral diversity before deciding the final
+status.
+
+5.  DIFFERENT THREAT LEVELS
+
+Instead of only BENIGN or MALICIOUS, MALGUARD can provide risk-oriented
+states such as:
+
+BENIGN ELEVATED SUSPICIOUS CONFIRMED THREAT
+
+This is more suitable for continuous security monitoring.
+
+6.  BEHAVIORAL DIVERSITY
+
+MALGUARD considers activity across multiple categories:
+
+Process activity Network activity File activity Registry activity DNS
+activity
+
+Multiple suspicious behavioral categories can provide stronger evidence
+than a single isolated behavior.
+
+7.  LIGHTWEIGHT REAL-TIME MODEL
+
+Several projects in the literature review use deep-learning
+architectures such as LSTM, GRU, CNN-LSTM, attention mechanisms and
+transfer learning.
+
+The current MALGUARD implementation uses Random Forest with engineered
+behavioral features and a separate risk engine, providing a
+comparatively lightweight architecture for a real-time Windows
+endpoint-monitoring prototype.
+
+8.  COMPLETE END-TO-END SYSTEM
+
+MALGUARD is not only a machine-learning notebook or offline
+classification experiment.
+
+The system contains: Sysmon Collector Feature Extractor Random Forest
+Model Risk Engine FastAPI Backend React Frontend
+
+The dashboard contains: Dashboard Live Events Threats Detection History
+
+Therefore, MALGUARD demonstrates an end-to-end real-time
+threat-monitoring pipeline.
+
+COMPARISON WITH LITERATURE REVIEW PROJECTS
+
+Directional Features and Rule-Based Labeling for Real-Time Network
+Traffic-Based Android Spyware Classification: Focuses primarily on
+Android spyware and network traffic. MALGUARD focuses on Windows
+endpoint behavior and combines process, network, file, registry and DNS
+telemetry.
+
+SLAM – Sliding Local Attention Mechanism: Uses API-call sequences and
+local attention. MALGUARD uses multiple categories of live Windows
+Sysmon telemetry together with ML probability and contextual risk
+assessment.
+
+Malware-SeqGuard: Uses LSTM-GRU for Android malware using sequential
+logs and network traffic. MALGUARD uses a lightweight Random Forest
+behavioral detector designed around live Windows Sysmon telemetry.
+
+Android Malware Detection Using Supervised Machine Learning: The
+surveyed approaches commonly use static analysis, permissions and
+API-related features. MALGUARD uses dynamic runtime Windows telemetry.
+
+AI-Based Malware Detection for IoHT: Focuses on IoHT environments and
+PE-file-based ML analysis. MALGUARD focuses on continuous behavioral
+monitoring of a Windows endpoint.
+
+CNN-LSTM with Transfer Learning: Uses deep learning and transfer
+learning for malware classification. MALGUARD uses behavioral feature
+engineering, Random Forest and a separate risk engine for real-time
+monitoring.
+
+STRONGEST UNIQUENESS POINTS
+
+1.  Real-time Windows Sysmon telemetry
+2.  Multi-behavior monitoring
+3.  Behavioral-window analysis
+4.  ML-based malicious probability
+5.  Context-aware risk engine
+6.  Behavioral-diversity analysis
+7.  Multiple threat levels
+8.  FastAPI backend
+9.  React security dashboard
+10. End-to-end live monitoring
+
+VIVA / PRESENTATION ANSWER
+
+“Most of the existing works we studied focus on specific environments
+such as Android, network traffic, API-call sequences, PE files, or
+computationally expensive deep-learning architectures. Our
+implementation, MALGUARD, focuses on real-time Windows endpoint
+behavioral monitoring.
+
+It continuously collects live Sysmon telemetry and analyzes process,
+network, file, registry and DNS activities in behavioral windows. A
+Random Forest model estimates malicious probability, while an additional
+risk engine considers behavioral diversity and contextual evidence
+before determining the final threat status.
+
+The results are provided through a FastAPI backend and visualized using
+a real-time React security dashboard. Therefore, our project is not
+limited to offline malware classification; it demonstrates an end-to-end
+real-time behavioral threat-monitoring pipeline.”
+
+IMPORTANT NOTE
+
+The original synopsis describes sequence-learning and attention-based
+techniques such as LSTM, GRU and attention mechanisms.
+
+The current MALGUARD implementation has evolved into:
+
+Windows Sysmon → Behavioral Feature Engineering → Random Forest → Risk
+Engine → FastAPI → React Dashboard
+
+The final project documentation should therefore be updated so that the
+methodology accurately represents the implemented MALGUARD architecture.

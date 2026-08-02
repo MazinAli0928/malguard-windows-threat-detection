@@ -1,0 +1,1328 @@
+/* ============================================================
+   MALGUARD - SECURITY OPERATIONS DASHBOARD
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #090a0f;
+  --sidebar: #0d0e14;
+
+  --panel: #11131c;
+  --panel-secondary: #161822;
+
+  --border: #242735;
+
+  --text: #f4f5fa;
+  --muted: #858a9e;
+
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+
+  --green: #22c55e;
+  --yellow: #eab308;
+  --orange: #f97316;
+  --red: #ef4444;
+}
+
+
+/* ============================================================
+   GLOBAL
+   ============================================================ */
+
+body {
+  margin: 0;
+
+  background: var(--background);
+  color: var(--text);
+
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+.app {
+  display: flex;
+
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(99, 102, 241, 0.07),
+      transparent 30%
+    ),
+    var(--background);
+}
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.sidebar {
+  position: fixed;
+
+  left: 0;
+  top: 0;
+
+  width: 245px;
+  height: 100vh;
+
+  background: rgba(13, 14, 20, 0.97);
+
+  border-right: 1px solid var(--border);
+
+  padding: 24px 18px;
+
+  display: flex;
+  flex-direction: column;
+
+  z-index: 100;
+}
+
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 4px 8px 30px;
+}
+
+.brand-icon {
+  width: 43px;
+  height: 43px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #4338ca
+    );
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 5px 20px
+    rgba(99, 102, 241, 0.25);
+}
+
+.brand h1 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+}
+
+.brand span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: var(--muted);
+
+  font-size: 10px;
+}
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  color: #8c91a5;
+
+  padding: 12px 13px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.nav-item svg {
+  width: 18px;
+  height: 18px;
+}
+
+.nav-item:hover {
+  color: white;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+}
+
+.nav-item.active {
+  color: white;
+
+  background:
+    rgba(99, 102, 241, 0.13);
+
+  border:
+    1px solid
+    rgba(99, 102, 241, 0.18);
+}
+
+
+/* ============================================================
+   SIDEBAR BOTTOM
+   ============================================================ */
+
+.sidebar-bottom {
+  margin-top: auto;
+
+  border-top:
+    1px solid var(--border);
+
+  padding: 20px 7px 5px;
+}
+
+.engine-info {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.engine-info > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.engine-info strong {
+  color: #dfe1e9;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.engine-info span {
+  color: var(--muted);
+
+  font-size: 10px;
+
+  margin-top: 3px;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+
+  flex-shrink: 0;
+
+  background: #555;
+
+  border-radius: 50%;
+}
+
+.status-dot.online {
+  background: var(--green);
+
+  box-shadow:
+    0 0 10px
+    rgba(34, 197, 94, 0.75);
+}
+
+.sidebar-bottom p {
+  color: var(--muted);
+
+  font-size: 9px;
+
+  margin:
+    18px 0 3px;
+}
+
+.sidebar-bottom small {
+  color: #555b6e;
+
+  font-size: 8px;
+}
+
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+
+.main {
+  width:
+    calc(100% - 245px);
+
+  min-height: 100vh;
+
+  margin-left: 245px;
+
+  padding:
+    28px 34px 50px;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  margin-bottom: 27px;
+}
+
+.header h2 {
+  margin: 0 0 5px;
+
+  color: #f7f7fa;
+
+  font-size: 23px;
+  font-weight: 650;
+}
+
+.header p {
+  color: var(--muted);
+
+  margin: 0;
+
+  font-size: 11px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.header button {
+  border: none;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.header button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.refresh-button {
+  width: 39px;
+  height: 39px;
+
+  border-radius: 8px !important;
+
+  background: #151721;
+
+  color: #a8adbf;
+
+  border:
+    1px solid var(--border)
+    !important;
+}
+
+.refresh-button:hover {
+  background: #1b1e2a;
+}
+
+.start-button,
+.stop-button {
+  height: 39px;
+
+  padding: 0 17px;
+
+  gap: 8px;
+
+  border-radius: 8px;
+
+  color: white;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.start-button {
+  background:
+    linear-gradient(
+      135deg,
+      #6366f1,
+      #4f46e5
+    );
+}
+
+.start-button:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #7375f5,
+      #5b52e8
+    );
+}
+
+.stop-button {
+  background:
+    linear-gradient(
+      135deg,
+      #dc2626,
+      #b91c1c
+    );
+}
+
+.stop-button:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #ef4444,
+      #c91f1f
+    );
+}
+
+button:disabled {
+  opacity: 0.55;
+
+  cursor: wait;
+}
+
+
+/* ============================================================
+   API ERROR
+   ============================================================ */
+
+.api-error {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  background:
+    rgba(239, 68, 68, 0.1);
+
+  border:
+    1px solid
+    rgba(239, 68, 68, 0.25);
+
+  color: #fca5a5;
+
+  padding: 12px 15px;
+
+  border-radius: 8px;
+
+  font-size: 11px;
+
+  margin-bottom: 20px;
+}
+
+
+/* ============================================================
+   METRIC CARDS
+   ============================================================ */
+
+.metric-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin-bottom: 14px;
+}
+
+.metric-card {
+  min-width: 0;
+
+  background:
+    linear-gradient(
+      145deg,
+      #13151f,
+      #10121a
+    );
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 11px;
+
+  padding: 17px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.metric-card:hover {
+  border-color: #303447;
+
+  transform:
+    translateY(-1px);
+}
+
+.metric-icon {
+  width: 39px;
+  height: 39px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background:
+    rgba(99, 102, 241, 0.12);
+
+  color:
+    var(--primary-light);
+}
+
+.metric-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.metric-card > div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-card span {
+  color: var(--muted);
+
+  font-size: 9px;
+}
+
+.metric-card strong {
+  color: #f5f5f7;
+
+  font-size: 20px;
+
+  margin: 3px 0;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.metric-card small {
+  color: #5f6476;
+
+  font-size: 8px;
+}
+
+
+/* ============================================================
+   PANELS
+   ============================================================ */
+
+.panel {
+  background:
+    linear-gradient(
+      145deg,
+      #12141d,
+      #10121a
+    );
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 11px;
+
+  padding: 19px;
+}
+
+.panel-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.panel-header h3 {
+  margin: 0 0 4px;
+
+  color: #e8e9ee;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.panel-header p,
+.panel-header > span {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 9px;
+}
+
+
+/* ============================================================
+   THREAT / BEHAVIOR ROW
+   ============================================================ */
+
+.dashboard-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.25fr)
+    minmax(0, 1fr);
+
+  gap: 14px;
+
+  margin-bottom: 14px;
+}
+
+
+/* ============================================================
+   THREAT ASSESSMENT
+   ============================================================ */
+
+.threat-panel {
+  min-height: 295px;
+}
+
+.risk-display {
+  min-height: 210px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 30px;
+}
+
+
+/* ============================================================
+   DYNAMIC RISK RING
+   ============================================================ */
+
+.risk-ring {
+  width: 165px;
+  height: 165px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  background:
+    conic-gradient(
+      currentColor
+        var(--risk-progress, 0%),
+      #252836
+        var(--risk-progress, 0%)
+    );
+
+  box-shadow:
+    0 0 30px
+    rgba(0, 0, 0, 0.2);
+
+  transition:
+    background 0.4s ease;
+}
+
+.risk-ring::before {
+  content: "";
+
+  position: absolute;
+
+  width: 135px;
+  height: 135px;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #11131c,
+      #0e1018
+    );
+
+  box-shadow:
+    inset 0 0 15px
+    rgba(0, 0, 0, 0.3);
+}
+
+.risk-ring > div {
+  position: relative;
+
+  z-index: 1;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.risk-ring strong {
+  color: currentColor;
+
+  font-size: 29px;
+  font-weight: 700;
+}
+
+.risk-ring span {
+  color: var(--muted);
+
+  font-size: 8px;
+
+  margin-top: 3px;
+}
+
+
+/* ============================================================
+   RISK COLORS
+   ============================================================ */
+
+.risk-low {
+  color: var(--green);
+}
+
+.risk-elevated {
+  color: var(--yellow);
+}
+
+.risk-suspicious {
+  color: var(--orange);
+}
+
+.risk-high {
+  color: var(--red);
+}
+
+.risk-waiting {
+  color: #62677a;
+}
+
+
+/* ============================================================
+   RISK DETAILS
+   ============================================================ */
+
+.risk-details {
+  min-width: 0;
+
+  color: var(--text);
+}
+
+.risk-details > span {
+  color: var(--muted);
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+}
+
+.risk-details h2 {
+  color: currentColor;
+
+  font-size: 25px;
+  font-weight: 700;
+
+  margin:
+    7px 0 9px;
+}
+
+.risk-badge {
+  display: inline-block;
+
+  padding: 5px 9px;
+
+  border-radius: 5px;
+
+  background:
+    rgba(255, 255, 255, 0.05);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.06);
+
+  color: currentColor;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+
+  margin-bottom: 12px;
+}
+
+.risk-details p {
+  max-width: 330px;
+
+  color: var(--muted);
+
+  font-size: 9px;
+
+  line-height: 1.6;
+
+  margin: 0;
+}
+
+
+/* ============================================================
+   BEHAVIOR ACTIVITY
+   ============================================================ */
+
+.behavior-panel {
+  min-height: 295px;
+}
+
+.behavior-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+.behavior-card {
+  min-width: 0;
+
+  padding: 14px;
+
+  background: #151721;
+
+  border:
+    1px solid #232635;
+
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.behavior-card:hover {
+  background: #181a25;
+
+  border-color: #303449;
+}
+
+.behavior-icon {
+  color:
+    var(--primary-light);
+
+  display: flex;
+
+  flex-shrink: 0;
+}
+
+.behavior-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.behavior-card > div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.behavior-card span {
+  color: var(--muted);
+
+  font-size: 8px;
+}
+
+.behavior-card strong {
+  color: #e8e9ee;
+
+  margin-top: 3px;
+
+  font-size: 17px;
+}
+
+
+/* ============================================================
+   CHART
+   ============================================================ */
+
+.chart-panel {
+  margin-bottom: 14px;
+}
+
+.chart-container {
+  width: 100%;
+  height: 260px;
+}
+
+.live-label {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: var(--green)
+    !important;
+
+  font-weight: 700;
+
+  letter-spacing: 0.5px;
+}
+
+.live-label span {
+  width: 6px;
+  height: 6px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--green);
+
+  box-shadow:
+    0 0 8px
+    rgba(34, 197, 94, 0.7);
+}
+
+.empty-chart {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  color: #555a6e;
+}
+
+.empty-chart p {
+  color: #666b7e;
+
+  font-size: 10px;
+}
+
+
+/* ============================================================
+   EVENT TABLE
+   ============================================================ */
+
+.event-panel {
+  margin-bottom: 20px;
+}
+
+.event-table-wrapper {
+  width: 100%;
+
+  max-height: 350px;
+
+  overflow-x: auto;
+  overflow-y: auto;
+
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: auto;
+}
+
+th {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 2;
+
+  background: #11131c;
+
+  color: #686e82;
+
+  font-size: 8px;
+  font-weight: 600;
+
+  letter-spacing: 0.4px;
+
+  text-align: left;
+
+  padding: 10px;
+
+  border-bottom:
+    1px solid var(--border);
+}
+
+td {
+  padding:
+    11px 10px;
+
+  border-bottom:
+    1px solid #1c1f2b;
+
+  color: #b9bdca;
+
+  font-size: 9px;
+}
+
+tbody tr {
+  transition:
+    background 0.15s ease;
+}
+
+tbody tr:hover {
+  background:
+    rgba(99, 102, 241, 0.035);
+}
+
+.event-id {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 27px;
+  height: 22px;
+
+  background:
+    rgba(99, 102, 241, 0.12);
+
+  color:
+    var(--primary-light);
+
+  border:
+    1px solid
+    rgba(99, 102, 241, 0.1);
+
+  border-radius: 4px;
+
+  font-weight: 700;
+}
+
+.record-id {
+  color: #6e7386;
+
+  font-family:
+    Consolas,
+    "Courier New",
+    monospace;
+}
+
+.empty-events {
+  padding: 40px;
+
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 10px;
+}
+
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+
+.loading-screen {
+  width: 100vw;
+  height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(99, 102, 241, 0.08),
+      transparent 35%
+    ),
+    #090a0f;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  color:
+    var(--primary-light);
+}
+
+.loading-screen svg {
+  animation:
+    loadingPulse
+    1.5s infinite ease-in-out;
+}
+
+.loading-screen h2 {
+  color: white;
+
+  margin:
+    14px 0 3px;
+
+  letter-spacing: 1px;
+}
+
+.loading-screen p {
+  color: var(--muted);
+
+  font-size: 10px;
+}
+
+@keyframes loadingPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+
+    transform:
+      scale(0.95);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1.05);
+  }
+}
+
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #10121a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #303345;
+
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #41455c;
+}
+
+
+/* ============================================================
+   RESPONSIVE - MEDIUM SCREENS
+   ============================================================ */
+
+@media (max-width: 1200px) {
+
+  .metric-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-row {
+    grid-template-columns:
+      1fr;
+  }
+
+  .behavior-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE - TABLETS
+   ============================================================ */
+
+@media (max-width: 850px) {
+
+  .sidebar {
+    width: 205px;
+  }
+
+  .main {
+    width:
+      calc(100% - 205px);
+
+    margin-left: 205px;
+
+    padding:
+      24px 20px 40px;
+  }
+
+  .risk-display {
+    gap: 20px;
+  }
+
+  .risk-ring {
+    width: 145px;
+    height: 145px;
+  }
+
+  .risk-ring::before {
+    width: 118px;
+    height: 118px;
+  }
+
+  .behavior-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE - MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    width: 100%;
+
+    margin-left: 0;
+
+    padding:
+      20px 15px 35px;
+  }
+
+  .header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .start-button,
+  .stop-button {
+    flex: 1;
+  }
+
+  .metric-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .risk-display {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .risk-ring {
+    align-self: center;
+  }
+
+  .risk-details {
+    width: 100%;
+  }
+
+  .behavior-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .chart-container {
+    height: 220px;
+  }
+}
+
+
+/* ============================================================
+   VERY SMALL SCREENS
+   ============================================================ */
+
+@media (max-width: 450px) {
+
+  .behavior-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+  .panel {
+    padding: 15px;
+  }
+
+  .header h2 {
+    font-size: 20px;
+  }
+}

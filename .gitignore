@@ -1,0 +1,73 @@
+# ============================================================
+# MALGUARD - GITIGNORE
+# ============================================================
+
+# Python virtual environment
+venv/
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Live Sysmon telemetry
+dataset/windows/raw/
+*live_sysmon_events.jsonl
+
+# Raw/local datasets
+dataset/raw/
+
+# Large datasets
+*.csv
+*.parquet
+*.arff
+
+# Trained model binaries
+*.pkl
+*.joblib
+*.keras
+*.h5
+
+# Node
+frontend/node_modules/
+
+# Vite build
+frontend/dist/
+frontend/.vite/
+
+# npm debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Windows
+$RECYCLE.BIN/
+System Volume Information/
+
+# Local results that can be regenerated
+results/
