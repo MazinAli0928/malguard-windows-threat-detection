@@ -17,6 +17,8 @@ class DetectorState:
 
         self.started_at = None
 
+        self.last_error = None
+
         self.latest_prediction = None
 
         self.prediction_history = deque(
@@ -36,7 +38,13 @@ class DetectorState:
         with self.lock:
 
             self.running = True
+            self.last_error = None
             self.started_at = datetime.now().isoformat()
+
+    def set_error(self, err_msg):
+
+        with self.lock:
+            self.last_error = str(err_msg)
 
     def stop(self):
 
@@ -76,6 +84,7 @@ class DetectorState:
             return {
                 "running": self.running,
                 "started_at": self.started_at,
+                "error": self.last_error,
                 "total_events": self.total_events,
                 "total_predictions": self.total_predictions,
                 "total_alerts": self.total_alerts,

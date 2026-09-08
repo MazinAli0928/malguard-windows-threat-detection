@@ -2116,3 +2116,812 @@ tbody tr:hover {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ============================================================
+   MALGUARD THEME TOGGLE
+   ============================================================ */
+
+.theme-toggle {
+  position: relative;
+
+  width: 66px;
+  height: 32px;
+
+  padding: 3px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  background: var(--surface-3);
+
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 3px var(--accent-soft);
+}
+
+.theme-icon {
+  position: relative;
+  z-index: 2;
+
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--muted);
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.theme-icon.active {
+  color: var(--text);
+}
+
+.theme-slider {
+  position: absolute;
+
+  top: 3px;
+  left: 3px;
+
+  width: 27px;
+  height: 24px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.15);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+:root[data-theme="light"] .theme-slider {
+  transform: translateX(32px);
+}
+
+.theme-toggle:active .theme-slider {
+  transform: scale(0.92);
+}
+
+:root[data-theme="light"]
+  .theme-toggle:active
+  .theme-slider {
+  transform: translateX(32px) scale(0.92);
+}
+/* ============================================================
+   MALGUARD - FINAL LIGHT / DARK THEME OVERRIDES
+   ============================================================ */
+
+.app {
+  background:
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(99, 102, 241, 0.07),
+      transparent 30%
+    ),
+    var(--bg, var(--background));
+
+  color: var(--text);
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.global-theme-toggle {
+  position: fixed;
+  top: 28px;
+  right: 34px;
+  z-index: 1000;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 66px;
+  height: 32px;
+  padding: 3px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  cursor: pointer;
+
+  background: var(--surface, var(--panel));
+  color: var(--muted);
+
+  border: 1px solid var(--border);
+  border-radius: 999px;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent, var(--primary));
+
+  box-shadow:
+    0 0 0 3px var(--accent-soft, rgba(99, 102, 241, 0.12)),
+    0 5px 18px rgba(0, 0, 0, 0.12);
+}
+
+.theme-toggle:active {
+  transform: scale(0.97);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent, var(--primary));
+  outline-offset: 3px;
+}
+
+.theme-icon {
+  position: relative;
+  z-index: 3;
+
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--muted);
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.theme-icon.active {
+  color: var(--text);
+}
+
+.theme-slider {
+  position: absolute;
+  z-index: 1;
+
+  top: 3px;
+  left: 3px;
+
+  width: 27px;
+  height: 24px;
+
+  background: var(--surface, var(--panel));
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.16);
+
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.theme-slider.dark {
+  transform: translateX(0);
+}
+
+.theme-slider.light {
+  transform: translateX(32px);
+}
+
+/* ============================================================
+   LIGHT MODE
+   ============================================================ */
+
+:root[data-theme="light"] {
+  --background: #f3f5f9;
+  --sidebar: #ffffff;
+  --panel: #ffffff;
+  --panel-secondary: #f8f9fc;
+  --border: #dfe3eb;
+
+  --text: #171923;
+  --muted: #73798a;
+
+  --primary: #4f46e5;
+  --primary-light: #6366f1;
+
+  --green: #16a34a;
+  --yellow: #d97706;
+  --orange: #ea580c;
+  --red: #dc2626;
+
+  --bg: #f3f5f9;
+  --surface: #ffffff;
+  --surface-2: #f8f9fc;
+  --surface-3: #eef1f6;
+  --text-secondary: #555b6d;
+  --accent: #4f46e5;
+  --accent-soft: rgba(79, 70, 229, 0.09);
+  --danger: #dc2626;
+  --warning: #d97706;
+  --success: #16a34a;
+}
+
+:root[data-theme="light"] .sidebar {
+  background: rgba(255, 255, 255, 0.97);
+
+  box-shadow:
+    4px 0 24px rgba(15, 23, 42, 0.045);
+}
+
+:root[data-theme="light"] .brand h1 {
+  color: var(--text);
+}
+
+:root[data-theme="light"] .nav-item {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="light"] .nav-item:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+:root[data-theme="light"] .nav-item.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: rgba(79, 70, 229, 0.16);
+}
+
+:root[data-theme="light"] .engine-info strong,
+:root[data-theme="light"] .header h2,
+:root[data-theme="light"] .panel-header h3,
+:root[data-theme="light"] .metric-card strong,
+:root[data-theme="light"] .behavior-card strong {
+  color: var(--text);
+}
+
+:root[data-theme="light"] .refresh-button {
+  background: var(--surface-2);
+  color: var(--text-secondary);
+  border-color: var(--border) !important;
+}
+
+:root[data-theme="light"] .refresh-button:hover {
+  background: var(--surface-3);
+  color: var(--accent);
+}
+
+:root[data-theme="light"] .metric-card,
+:root[data-theme="light"] .panel,
+:root[data-theme="light"] .event-summary-card {
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #fafbfe
+    );
+
+  border-color: var(--border);
+
+  box-shadow:
+    0 6px 22px rgba(15, 23, 42, 0.045);
+}
+
+:root[data-theme="light"] .behavior-card {
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+
+:root[data-theme="light"] .behavior-card:hover {
+  background: var(--surface-3);
+  border-color: var(--border-light, #cfd5e1);
+}
+
+:root[data-theme="light"] .risk-ring::before {
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f4f6fa
+    );
+
+  box-shadow:
+    inset 0 0 15px rgba(15, 23, 42, 0.06);
+}
+
+:root[data-theme="light"] .risk-badge {
+  background: var(--accent-soft);
+  border-color: var(--border);
+}
+
+:root[data-theme="light"] th {
+  background: var(--surface-2);
+  color: var(--muted);
+}
+
+:root[data-theme="light"] td {
+  color: var(--text-secondary);
+  border-bottom-color: var(--border);
+}
+
+:root[data-theme="light"] tbody tr:hover {
+  background: var(--accent-soft);
+}
+
+:root[data-theme="light"] .event-id {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--border);
+}
+
+:root[data-theme="light"] .record-id {
+  color: var(--muted);
+}
+
+:root[data-theme="light"] .loading-screen {
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(79, 70, 229, 0.08),
+      transparent 35%
+    ),
+    var(--background);
+
+  color: var(--primary-light);
+}
+
+:root[data-theme="light"] .loading-screen h2 {
+  color: var(--text);
+}
+
+:root[data-theme="light"] ::-webkit-scrollbar-track {
+  background: var(--surface-2);
+}
+
+:root[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: #c5cad5;
+}
+
+:root[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: #aeb5c3;
+}
+
+/* ============================================================
+   CHART
+   ============================================================ */
+
+.recharts-cartesian-grid line {
+  stroke: var(--border) !important;
+}
+
+.recharts-text {
+  fill: var(--muted);
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .global-theme-toggle {
+    top: 18px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 450px) {
+  .global-theme-toggle {
+    top: 14px;
+    right: 12px;
+  }
+
+  .theme-toggle {
+    width: 60px;
+    height: 30px;
+  }
+
+  .theme-slider.light {
+    transform: translateX(26px);
+  }
+}
+
+/* ============================================================
+   THREAT LEVEL DIALOGUE BOX
+   ============================================================ */
+
+.threat-level-guide-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 8px 14px;
+
+  font-size: 13px;
+  font-weight: 500;
+  color: #fb923c;
+  background: rgba(249, 115, 22, 0.08);
+
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.threat-level-guide-btn:hover {
+  background: rgba(249, 115, 22, 0.16);
+  border-color: rgba(249, 115, 22, 0.4);
+  transform: translateY(-1px);
+}
+
+.threat-levels-dialog {
+  width: min(720px, 95vw);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.threat-dialog-intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 14px;
+  margin-bottom: 18px;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9px;
+}
+
+.threat-dialog-intro .intro-icon {
+  color: #38bdf8;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.threat-dialog-intro strong {
+  display: block;
+  font-size: 13px;
+  color: #f3f4f6;
+  margin-bottom: 4px;
+}
+
+.threat-dialog-intro p {
+  margin: 0;
+  font-size: 12px;
+  color: #9ca3af;
+  line-height: 1.5;
+}
+
+.threat-levels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-bottom: 16px;
+}
+
+/* ── Base card (dark theme) ── */
+.threat-level-card {
+  padding: 15px 16px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-left-width: 4px;
+}
+
+/* ── Per-level dark colours ── */
+.tlc-confirmed {
+  background: rgba(239, 68, 68, 0.07);
+  border-color: rgba(239, 68, 68, 0.2);
+  border-left-color: #ef4444;
+}
+.tlc-confirmed .tlc-icon { color: #f87171; }
+
+.tlc-high {
+  background: rgba(249, 115, 22, 0.07);
+  border-color: rgba(249, 115, 22, 0.2);
+  border-left-color: #f97316;
+}
+.tlc-high .tlc-icon { color: #fb923c; }
+
+.tlc-suspicious {
+  background: rgba(234, 179, 8, 0.07);
+  border-color: rgba(234, 179, 8, 0.2);
+  border-left-color: #eab308;
+}
+.tlc-suspicious .tlc-icon { color: #facc15; }
+
+.tlc-elevated {
+  background: rgba(14, 165, 233, 0.07);
+  border-color: rgba(14, 165, 233, 0.2);
+  border-left-color: #0ea5e9;
+}
+.tlc-elevated .tlc-icon { color: #38bdf8; }
+
+.tlc-low {
+  background: rgba(34, 197, 94, 0.07);
+  border-color: rgba(34, 197, 94, 0.2);
+  border-left-color: #22c55e;
+}
+.tlc-low .tlc-icon { color: #4ade80; }
+
+/* ── Card internals ── */
+.threat-level-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.threat-level-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.threat-level-title-wrap h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: 0.1px;
+}
+
+.threat-level-criteria {
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin-bottom: 7px;
+}
+
+.threat-level-criteria strong {
+  color: #64748b;
+  font-weight: 600;
+}
+
+.threat-level-desc {
+  margin: 0 0 4px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+.threat-level-details {
+  margin: 0 0 10px;
+  font-size: 11.5px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.threat-level-action {
+  padding: 9px 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.threat-level-action span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+  color: #475569;
+}
+
+.threat-level-action p {
+  margin: 0;
+  font-size: 11.5px;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+/* ── Footer ── */
+.threat-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.threat-dialog-close-btn {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #e2e8f0;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.threat-dialog-close-btn:hover {
+  background: #334155;
+  border-color: #475569;
+}
+
+
+/* ============================================================
+   THREAT LEVEL DIALOGUE — LIGHT THEME
+   ============================================================ */
+
+:root[data-theme="light"] .threat-level-guide-btn {
+  color: #c2410c;
+  background: #fff7ed;
+  border-color: #fed7aa;
+}
+
+:root[data-theme="light"] .threat-level-guide-btn:hover {
+  background: #ffedd5;
+  border-color: #fb923c;
+}
+
+:root[data-theme="light"] .threat-levels-dialog {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .threat-modal-header span {
+  color: #94a3b8;
+}
+
+:root[data-theme="light"] .threat-modal-header h2 {
+  color: #1e293b;
+}
+
+:root[data-theme="light"] .threat-modal-header button {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+
+:root[data-theme="light"] .threat-dialog-intro {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+}
+
+:root[data-theme="light"] .threat-dialog-intro .intro-icon {
+  color: #0284c7;
+}
+
+:root[data-theme="light"] .threat-dialog-intro strong {
+  color: #0c4a6e;
+}
+
+:root[data-theme="light"] .threat-dialog-intro p {
+  color: #0369a1;
+}
+
+/* ── Per-level light cards ── */
+:root[data-theme="light"] .tlc-confirmed {
+  background: #fff5f5;
+  border-color: #fecaca;
+  border-left-color: #dc2626;
+}
+:root[data-theme="light"] .tlc-confirmed .tlc-icon { color: #dc2626; }
+
+:root[data-theme="light"] .tlc-high {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  border-left-color: #ea580c;
+}
+:root[data-theme="light"] .tlc-high .tlc-icon { color: #ea580c; }
+
+:root[data-theme="light"] .tlc-suspicious {
+  background: #fefce8;
+  border-color: #fde68a;
+  border-left-color: #ca8a04;
+}
+:root[data-theme="light"] .tlc-suspicious .tlc-icon { color: #ca8a04; }
+
+:root[data-theme="light"] .tlc-elevated {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+  border-left-color: #0284c7;
+}
+:root[data-theme="light"] .tlc-elevated .tlc-icon { color: #0284c7; }
+
+:root[data-theme="light"] .tlc-low {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  border-left-color: #16a34a;
+}
+:root[data-theme="light"] .tlc-low .tlc-icon { color: #16a34a; }
+
+/* ── Light card text ── */
+:root[data-theme="light"] .threat-level-title-wrap h3 {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .threat-level-criteria {
+  color: #475569;
+}
+
+:root[data-theme="light"] .threat-level-criteria strong {
+  color: #334155;
+}
+
+:root[data-theme="light"] .threat-level-desc {
+  color: #1e293b;
+}
+
+:root[data-theme="light"] .threat-level-details {
+  color: #475569;
+}
+
+:root[data-theme="light"] .threat-level-action {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme="light"] .threat-level-action span {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .threat-level-action p {
+  color: #334155;
+}
+
+:root[data-theme="light"] .threat-dialog-footer {
+  border-top-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .threat-dialog-close-btn {
+  color: #1e293b;
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+:root[data-theme="light"] .threat-dialog-close-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+/* ── Light badge overrides for contrast ── */
+:root[data-theme="light"] .risk-table-badge.badge-low {
+  color: #15803d;
+  background: #dcfce7;
+}
+
+:root[data-theme="light"] .risk-table-badge.badge-elevated {
+  color: #92400e;
+  background: #fef3c7;
+}
+
+:root[data-theme="light"] .risk-table-badge.badge-suspicious {
+  color: #c2410c;
+  background: #ffedd5;
+}
+
+:root[data-theme="light"] .risk-table-badge.badge-high {
+  color: #b91c1c;
+  background: #fee2e2;
+}

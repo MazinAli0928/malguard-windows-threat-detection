@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ThreatLevelDialog from "../components/ThreatLevelDialog";
 import "../App.css";
 import {
   Activity,
@@ -316,6 +317,7 @@ function Dashboard() {
 
 
           <div className="header-actions">
+            <ThreatLevelDialog />
 
             <button
               className="refresh-button"
@@ -362,6 +364,20 @@ function Dashboard() {
 
         </header>
 
+
+        {status?.error && (
+          <div
+            className="api-error"
+            style={{
+              background: "rgba(239, 68, 68, 0.15)",
+              borderColor: "rgba(239, 68, 68, 0.3)",
+              color: "#f87171",
+            }}
+          >
+            <AlertTriangle size={20} style={{ color: "#ef4444" }} />
+            <span>{status.error}</span>
+          </div>
+        )}
 
         {/* ===================================================
             API ERROR

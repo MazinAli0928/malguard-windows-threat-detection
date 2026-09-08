@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
+import ThreatLevelDialog from "../components/ThreatLevelDialog";
+
 import {
   AlertTriangle,
   CheckCircle2,
@@ -127,6 +129,8 @@ function Threats() {
         </div>
 
         <div className="header-actions">
+          <ThreatLevelDialog />
+
           <button
             className="refresh-button"
             onClick={fetchThreats}

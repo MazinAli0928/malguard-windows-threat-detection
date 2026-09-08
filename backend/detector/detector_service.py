@@ -361,10 +361,16 @@ class DetectorService:
 
         except Exception as error:
 
+            err_msg = str(error)
+            if "Access is denied" in err_msg or (hasattr(error, 'winerror') and error.winerror == 5):
+                err_msg = "Access is denied. Please run MALGUARD Backend as Administrator to read Sysmon event log."
+
             print(
                 "Detector service error:",
-                error
+                err_msg
             )
+
+            self.state.set_error(err_msg)
 
         finally:
 
