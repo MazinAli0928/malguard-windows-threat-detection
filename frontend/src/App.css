@@ -2924,4 +2924,133 @@ tbody tr:hover {
 :root[data-theme="light"] .risk-table-badge.badge-high {
   color: #b91c1c;
   background: #fee2e2;
+}/* ============================================================
+   THREAT POPUP NOTIFICATION
+   ============================================================ */
+
+.threat-popup {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 380px;
+  max-width: calc(100vw - 48px);
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-left: 4px solid #eab308;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 14px;
+  z-index: 9999;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateX(120%);
+  opacity: 0;
+}
+
+.threat-popup.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.threat-popup.hidden {
+  transform: translateX(120%);
+  opacity: 0;
+}
+
+.threat-popup.high-risk {
+  border-left-color: #ef4444;
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.threat-popup.high-risk .threat-popup-icon {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.threat-popup.suspicious {
+  border-left-color: #f59e0b;
+}
+
+.threat-popup.suspicious .threat-popup-icon {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.threat-popup-icon {
+  flex-shrink: 0;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.threat-popup-content {
+  flex-grow: 1;
+}
+
+.threat-popup-content h4 {
+  margin: 0 0 4px 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.threat-popup-prob {
+  font-size: 13px;
+  color: #cbd5e1;
+  margin-bottom: 6px;
+}
+
+.threat-popup-content p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #94a3b8;
+}
+
+.threat-popup-close {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-top: -4px;
+  margin-right: -4px;
+}
+
+.threat-popup-close:hover {
+  background: #334155;
+  color: #f1f5f9;
+}
+
+/* Light theme support */
+:root[data-theme="light"] .threat-popup {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+}
+
+:root[data-theme="light"] .threat-popup-content h4 {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .threat-popup-prob {
+  color: #334155;
+}
+
+:root[data-theme="light"] .threat-popup-content p {
+  color: #475569;
+}
+
+:root[data-theme="light"] .threat-popup-close:hover {
+  background: #f1f5f9;
+  color: #0f172a;
 }
