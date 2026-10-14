@@ -2,6 +2,62 @@
    MALGUARD - SECURITY OPERATIONS DASHBOARD
    ============================================================ */
 
+:root {
+  --bg: #090a0f;
+  --surface: #10121a;
+  --surface-2: #151720;
+  --surface-3: #191b26;
+
+  --border: #252837;
+
+  --text: #e7e9ef;
+  --text-secondary: #a1a5b5;
+  --muted: #707588;
+
+  --accent: #6366f1;
+  --accent-soft: rgba(99, 102, 241, 0.12);
+
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --success: #22c55e;
+}
+
+:root[data-theme="light"] {
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --surface-2: #f8f9fc;
+  --surface-3: #eef1f6;
+
+  --border: #dfe3eb;
+
+  --text: #171923;
+  --text-secondary: #555b6d;
+  --muted: #7a8192;
+
+  --accent: #4f46e5;
+  --accent-soft: rgba(79, 70, 229, 0.10);
+
+  --danger: #dc2626;
+  --warning: #d97706;
+  --success: #16a34a;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+
+  background: var(--bg);
+  color: var(--text);
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
 * {
   box-sizing: border-box;
 }
@@ -1325,4 +1381,60 @@ tbody tr:hover {
   .header h2 {
     font-size: 20px;
   }
+}
+/* ============================================================
+   MALGUARD - THEME FINALIZATION
+   ============================================================ */
+
+:root {
+  --bg: #090a0f;
+  --surface: #10121a;
+  --surface-2: #151720;
+  --surface-3: #191b26;
+  --border-light: #303348;
+
+  --text: #e7e9ef;
+  --text-secondary: #a1a5b5;
+  --muted: #707588;
+
+  --accent: #6366f1;
+  --accent-soft: rgba(99, 102, 241, 0.12);
+
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --success: #22c55e;
+}
+
+:root[data-theme="light"] {
+  --bg: #f3f5f9;
+  --surface: #ffffff;
+  --surface-2: #f8f9fc;
+  --surface-3: #eef1f6;
+  --border: #dfe3eb;
+  --border-light: #cfd5e1;
+
+  --text: #171923;
+  --text-secondary: #555b6d;
+  --muted: #73798a;
+
+  --accent: #4f46e5;
+  --accent-soft: rgba(79, 70, 229, 0.09);
+
+  --danger: #dc2626;
+  --warning: #d97706;
+  --success: #16a34a;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
